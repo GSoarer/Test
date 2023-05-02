@@ -10,7 +10,6 @@
         Width="1240"
         WindowStartupLocation="CenterScreen" MinWidth="1240" MinHeight="740"
         
-        
         >
     <Grid>
 
