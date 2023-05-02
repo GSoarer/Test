@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33423.256
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorqueMonitoring", "TorqueMonitoring\TorqueMonitoring.csproj", "{0080C2FC-6BD5-4304-9E2E-D0A481BF8431}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0080C2FC-6BD5-4304-9E2E-D0A481BF8431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0080C2FC-6BD5-4304-9E2E-D0A481BF8431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0080C2FC-6BD5-4304-9E2E-D0A481BF8431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0080C2FC-6BD5-4304-9E2E-D0A481BF8431}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55E77124-BB13-4776-B3E7-F0BD7E7D9863}
+	EndGlobalSection
+EndGlobal

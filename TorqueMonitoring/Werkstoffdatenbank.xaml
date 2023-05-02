@@ -1,0 +1,44 @@
+﻿<Page x:Class="TorqueMonitoring.Werkstoffdatenbank"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TorqueMonitoring"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Werkstoffdatenbank">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+
+        </Grid.ColumnDefinitions>
+
+
+        <TextBox Name ="labelWerkstoff_1" Text="test" FontFamily="Bahnschrift" Grid.Row="0" Grid.Column="0" IsReadOnly="{Binding ReadOnly}"/>
+        <TextBox Name ="labelWerkstoff_1_1" Text="test" FontFamily="Bahnschrift" Grid.Row="0" Grid.Column="1" IsReadOnly="{Binding ReadOnly}" PreviewMouseDown="labelWerkstoff_1_1_PreviewMouseDown"/>
+
+        <TextBox Name ="labelWerkstoff_2" Text="test" FontFamily="Bahnschrift" Grid.Row="1" Grid.Column="0" IsReadOnly="{Binding ReadOnly}"/>
+        <TextBox Name ="labelWerkstoff_2_1" Text="test" FontFamily="Bahnschrift" Grid.Row="1" Grid.Column="1" IsReadOnly="{Binding ReadOnly}"/>
+
+        <TextBox Name ="labelWerkstoff_3" Text="test" FontFamily="Bahnschrift" Grid.Row="2" Grid.Column="0" IsReadOnly="{Binding ReadOnly}"/>
+        <TextBox Name ="labelWerkstoff_3_1" Text="test" FontFamily="Bahnschrift" Grid.Row="2" Grid.Column="1" IsReadOnly="{Binding ReadOnly}"/>
+
+
+        <Label Name="schnittdatenLabel" Content="{Binding Schnittdaten}" FontFamily="Bahnschrift" Grid.Row="0" Grid.RowSpan="7" Grid.Column="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+    </Grid>
+</Page>

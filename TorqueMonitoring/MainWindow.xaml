@@ -1,0 +1,502 @@
+﻿<Window x:Class="TorqueMonitoring.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TorqueMonitoring"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="740"
+        Width="1240"
+        WindowStartupLocation="CenterScreen" MinWidth="1240" MinHeight="740"
+        
+        
+        >
+    <Grid>
+
+        <!-- Background -->
+
+        <Border Background="White"
+                CornerRadius="25" />
+
+        <!-- Main Grid -->
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200" />
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.RowSpan="2"
+                   Height="200"
+                   Source="assets/Bild1.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,0">
+                
+            </Image>
+
+
+            <!-- Background -->
+
+            <Border Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.RowSpan="4"
+                    Opacity="0.3"
+                    
+                    Margin="0,0,0,0">
+
+                <Border.Background>
+
+                    <LinearGradientBrush StartPoint="0.75,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#FFAFCEE2"
+                                      Offset="0.3" />
+
+                        <GradientStop Color="#FFFFFF"
+                                      Offset="0.8" />
+
+                    </LinearGradientBrush>
+
+                </Border.Background>
+
+                
+
+            </Border>
+
+
+
+            
+
+             <!--Side bar-->   
+
+            <Border x:Name="homeScreenSideBar"                    
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3"
+                    Background="#FFDEE7ED"
+                    Width="100"
+                    Height="100"
+                    CornerRadius="20"
+                    Margin="0,0,0,0" VerticalAlignment="Center">
+
+                    <Grid Height="Auto" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            
+                            
+
+                        </Grid.RowDefinitions>
+
+                        <!--Add process button-->
+
+                        <Button Grid.Row="0"
+                                x:Name="addBohrprozessButton"
+                               Style="{StaticResource DockBtnStyle}" Click="addBohrprozessButton_Click">
+
+                            <Button.Background>
+
+                                <ImageBrush ImageSource="assets/logo_addBohrprozess.png"
+                                            Stretch="Uniform" />
+                            </Button.Background>
+
+                            <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=home}"
+                                   IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                                <Grid>
+                                    <Border Style="{StaticResource border}">
+
+                                        <TextBlock Text="Hauptmenü"
+                                                   Style="{StaticResource PopupText}" />
+                                    </Border>
+
+                                </Grid>
+
+                            </Popup>
+
+                        </Button>
+
+                       
+
+
+                    </Grid>
+
+            </Border>
+
+            <!-- Neuer Bohrprozess Sidebar 1 -->
+
+            <Border x:Name="newProcessMenuSideBar1"
+                    Visibility="Hidden"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3"
+                    Background="#FFDEE7ED"
+                    Width="100"
+                    Height="100"
+                    CornerRadius="20"
+                    Margin="0,0,0,0" VerticalAlignment="Center">
+
+                <Grid Height="Auto" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        
+
+
+                    </Grid.RowDefinitions>
+
+                    <!--Start monitoring button-->
+
+                    <Button Grid.Row="0"
+                                x:Name="nextPageNewProcessMenu"
+                               Style="{StaticResource DockBtnStyle}" Click="nextPageNewProcessMenu_Click">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="assets/logo_startMonitoring.png"
+                                            Stretch="Uniform" />
+                        </Button.Background>
+
+                        <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=nextPageNewProcessMenu}"
+                                   IsOpen="{Binding ElementName=nextPageNewProcessMenu, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                            <Grid>
+                                <Border Style="{StaticResource border}">
+
+                                    <TextBlock Text="Weiter"
+                                                   Style="{StaticResource PopupText}" />
+                                </Border>
+
+                            </Grid>
+
+                        </Popup>
+
+                    </Button>
+
+                    
+
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- Neuer Bohrprozess Sidebar 2-->
+
+            <Border x:Name="newProcessMenuSideBar2"
+                    Visibility="Hidden"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3"
+                    Background="#FFDEE7ED"
+                    Width="100"
+                    Height="300"
+                    CornerRadius="20"
+                    Margin="0,0,0,0" VerticalAlignment="Center">
+
+                <Grid Height="300" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
+
+                    </Grid.RowDefinitions>
+
+                    <!--Start monitoring button-->
+
+                    <Button Grid.Row="0"
+                                x:Name="startMonitoringButton"
+                               Style="{StaticResource DockBtnStyle}" Click="startMonitoringButton_Click">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="assets/logo_startMonitoring.png"
+                                            Stretch="Uniform" />
+                        </Button.Background>
+
+                        <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=startMonitoringButton}"
+                                   IsOpen="{Binding ElementName=startMonitoringButton, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                            <Grid>
+                                <Border Style="{StaticResource border}">
+
+                                    <TextBlock Text="Start"
+                                                   Style="{StaticResource PopupText}" />
+                                </Border>
+
+                            </Grid>
+
+                        </Popup>
+
+                    </Button>
+
+                    <!--Save parameter button-->
+
+                    <Button Grid.Row="1"
+                                x:Name="saveParameterButton"
+                               Style="{StaticResource DockBtnStyle}" Margin="0,0,0,2" Click="database_Click">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="assets/logo_speichernButton.png"
+                                            Stretch="Uniform" />
+                        </Button.Background>
+
+                        <Popup Width="120"
+                                   HorizontalOffset="-35"
+                                   PlacementTarget="{Binding ElementName=saveParameterButton}"
+                                   IsOpen="{Binding ElementName=saveParameterButton, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                            <Grid>
+                                <Border Style="{StaticResource border}">
+
+                                    <TextBlock Text="Speichern"
+                                                   Style="{StaticResource PopupText}" />
+                                </Border>
+
+                            </Grid>
+
+                        </Popup>
+                    </Button>
+
+
+                </Grid>
+
+            </Border>
+            
+            <!--    Werkstoffdatenbank Sidebar -->
+
+            <Border x:Name="wdbSideBar"                    
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="3"
+                    Background="#FFDEE7ED"
+                    Width="100"
+                    Height="100"
+                    CornerRadius="20"
+                    Margin="0,0,0,0" VerticalAlignment="Center" Visibility="Hidden">
+
+                <Grid Height="Auto" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+
+
+
+                    </Grid.RowDefinitions>
+
+                    <!--Edit Werkstoffdatenbank button-->
+
+                    <Button Grid.Row="0"
+                                x:Name="editWDBButton"
+                               Style="{StaticResource DockBtnStyle}" Click="editWDBButton_Click">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="assets/logo_editButton.png"
+                                            Stretch="Uniform" />
+                        </Button.Background>
+
+                        <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=home}"
+                                   IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                            <Grid>
+                                <Border Style="{StaticResource border}">
+
+                                    <TextBlock Text="Hauptmenü"
+                                                   Style="{StaticResource PopupText}" />
+                                </Border>
+
+                            </Grid>
+
+                        </Popup>
+
+                    </Button>
+
+                    
+                    <!--finish editing button-->
+                    <Button Grid.Row="0"
+                                x:Name="finishEditWDBButton"
+                               Style="{StaticResource DockBtnStyle}" Click="finishEditWDBButton_Click" Visibility="Hidden">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="assets/logo_startMonitoring.png"
+                                            Stretch="Uniform" />
+                        </Button.Background>
+
+                        <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=home}"
+                                   IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                            <Grid>
+                                <Border Style="{StaticResource border}">
+
+                                    <TextBlock Text="Hauptmenü"
+                                                   Style="{StaticResource PopupText}" />
+                                </Border>
+
+                            </Grid>
+
+                        </Popup>
+
+                    </Button>
+
+
+
+
+                </Grid>
+
+            </Border>
+
+
+
+
+            <!--    Dock bar -->
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="1"
+                        
+                        Background="#FFDEE7ED"
+                        
+                        Height="80"
+                        CornerRadius="20"
+                        Margin="0,0,0,0" VerticalAlignment="Bottom">
+
+                    <Grid Height="85" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <!--Main page button-->
+
+                        <Button Grid.Column="1"
+                                x:Name="home"
+                               Style="{StaticResource DockBtnStyle}" Click="home_Click">
+
+                            <Button.Background>
+
+                                <ImageBrush ImageSource="assets/logo_torque2.png"
+                                            Stretch="Uniform" />
+                            </Button.Background>
+
+                            <Popup Width="120"
+                                   HorizontalOffset="-20"
+                                   PlacementTarget="{Binding ElementName=home}"
+                                   IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                                <Grid>
+                                    <Border Style="{StaticResource border}">
+
+                                        <TextBlock Text="Hauptmenü"
+                                                   Style="{StaticResource PopupText}" />
+                                    </Border>
+
+                                </Grid>
+                                
+                            </Popup>
+                
+                        </Button>
+
+                        <!--Database page button-->
+
+                        <Button Grid.Column="3"
+                                x:Name="database"
+                               Style="{StaticResource DockBtnStyle}" Margin="0,0,0,2" Click="database_Click">
+
+                            <Button.Background>
+
+                                <ImageBrush ImageSource="assets/logo_database.png"
+                                            Stretch="Uniform" />
+                            </Button.Background>
+
+                            <Popup Width="120"
+                                   HorizontalOffset="-35"
+                                   PlacementTarget="{Binding ElementName=database}"
+                                   IsOpen="{Binding ElementName=database, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                                <Grid>
+                                    <Border Style="{StaticResource border}">
+
+                                        <TextBlock Text="Werkstoffe"
+                                                   Style="{StaticResource PopupText}" />
+                                    </Border>
+
+                                </Grid>
+
+                            </Popup>
+                        </Button>
+
+
+                    </Grid>
+
+                </Border>
+
+
+            </Grid>
+            
+            
+            <!--Window frame-->
+
+            <Frame Grid.Row="1"
+                   Grid.Column="0"
+                   Name= "frame" NavigationUIVisibility="Hidden"/>
+
+
+            <TextBlock x:Name="titleTextBlock"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="1"
+                       Text="Select Process"
+                       FontFamily="Bahnschrift"
+                       Foreground="#CDD7E0"
+                       FontSize="36"
+                       Margin="20,20,0,0" />
+
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>

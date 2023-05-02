@@ -1,0 +1,45 @@
+﻿<Page x:Class="TorqueMonitoring.NewProcessMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TorqueMonitoring"
+      mc:Ignorable="d" 
+      Height="Auto"
+      Width="Auto"
+      Title="NewProcessMenu" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+
+        <!-- User Input 1 -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Bohrerdurchmesser:"/>
+        <TextBox Name="dc_Input" Grid.Row="1" Grid.Column="0" Width="200"/>
+
+        <!-- User Input 2 -->
+        <TextBlock Grid.Row="2" Grid.Column="0"  Text="Schneidenanzahl:"/>
+        <TextBox Name="z_Input" Grid.Row="3" Grid.Column="0" Width="200"/>
+
+        <!-- User Input 3 -->
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Bohrerspitzenwinkel:"/>
+        <TextBox Name="a_Input" Grid.Row="5" Grid.Column="0"  Width="200"/>
+
+
+        <Image Source="assets/bohrerbild.png" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="302" Margin="0" Width="572" />
+
+
+
+
+    </Grid>
+</Page>
