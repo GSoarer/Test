@@ -135,69 +135,12 @@
 
             </Border>
 
-            <!-- Neuer Bohrprozess Sidebar 1 -->
-
-            <Border x:Name="newProcessMenuSideBar1"
-                    Visibility="Hidden"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.RowSpan="3"
-                    Background="#FFDEE7ED"
-                    Width="100"
-                    Height="100"
-                    CornerRadius="20"
-                    Margin="0,0,0,0" VerticalAlignment="Center">
-
-                <Grid Height="Auto" VerticalAlignment="Stretch">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        
-
-
-                    </Grid.RowDefinitions>
-
-                    <!--Start monitoring button-->
-
-                    <Button Grid.Row="0"
-                                x:Name="nextPageNewProcessMenu"
-                               Style="{StaticResource DockBtnStyle}" Click="nextPageNewProcessMenu_Click">
-
-                        <Button.Background>
-
-                            <ImageBrush ImageSource="assets/logo_startMonitoring.png"
-                                            Stretch="Uniform" />
-                        </Button.Background>
-
-                        <Popup Width="120"
-                                   HorizontalOffset="-20"
-                                   PlacementTarget="{Binding ElementName=nextPageNewProcessMenu}"
-                                   IsOpen="{Binding ElementName=nextPageNewProcessMenu, Path=IsMouseOver, Mode=OneWay}"
-                                   Style="{StaticResource PopupStyle}">
-
-                            <Grid>
-                                <Border Style="{StaticResource border}">
-
-                                    <TextBlock Text="Weiter"
-                                                   Style="{StaticResource PopupText}" />
-                                </Border>
-
-                            </Grid>
-
-                        </Popup>
-
-                    </Button>
-
-                    
-
-
-                </Grid>
-
-            </Border>
+            
 
 
             <!-- Neuer Bohrprozess Sidebar 2-->
 
-            <Border x:Name="newProcessMenuSideBar2"
+            <Border x:Name="newProcessMenuSideBar"
                     Visibility="Hidden"
                     Grid.Row="0"
                     Grid.Column="1"

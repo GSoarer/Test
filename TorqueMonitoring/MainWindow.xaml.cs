@@ -18,6 +18,9 @@ using System.IO;
 using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 
+using System.Diagnostics;
+using System.Reflection;
+
 namespace TorqueMonitoring
 {
     /// <summary>
@@ -28,7 +31,7 @@ namespace TorqueMonitoring
         TheoreticalTorque tt = new TheoreticalTorque();
         PhysicalTorque pt = new PhysicalTorque();
 
-        NewProcessMenu np = new NewProcessMenu();
+        NewProcessMenu np = null;
 
         Werkstoffdatenbank wdb = null;
         
@@ -58,8 +61,8 @@ namespace TorqueMonitoring
             frame.NavigationService.Navigate(new Page1());
 
             wdbSideBar.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar1.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar2.Visibility = Visibility.Hidden;
+            newProcessMenuSideBar.Visibility = Visibility.Hidden;
+            
             homeScreenSideBar.Visibility = Visibility.Visible;
 
             //label.Content = np.d_Input.Text.ToString();
@@ -69,21 +72,33 @@ namespace TorqueMonitoring
         private void database_Click(object sender, RoutedEventArgs e)
         {
 
-            wdb = new Werkstoffdatenbank();
-            wdb.setReadOnly(true);
 
-            titleTextBlock.Text = "Werkstoffdatenbank";
-            frame.NavigationService.Navigate(wdb);
 
-            wdbSideBar.Visibility = Visibility.Visible;
-            homeScreenSideBar.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar1.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar2.Visibility = Visibility.Hidden;
+            /* wdb = new Werkstoffdatenbank();
+             wdb.setReadOnly(true);
+
+            // titleTextBlock.Text = "Werkstoffdatenbank";
+            // frame.NavigationService.Navigate(wdb);
+
+             /*
+             wdbSideBar.Visibility = Visibility.Visible;
+             homeScreenSideBar.Visibility = Visibility.Hidden;
+             newProcessMenuSideBar.Visibility = Visibility.Hidden;
+             */
+            string fileName = "SchnittdatenControl.xlsx";
+            string assemblyPath = Assembly.GetExecutingAssembly().Location;
+            string projectFolderPath = Directory.GetParent(assemblyPath).Parent.Parent.FullName;
+            // Console.WriteLine("Project Folder Path: " + projectFolderPath);
+
+            string filePath = projectFolderPath + "/files/" + fileName;
+
+            Process.Start(filePath);
+
         }
 
         private void addBohrprozessButton_Click(object sender, RoutedEventArgs e)
         {
-
+            np = new NewProcessMenu();
 
             titleTextBlock.Text = "Parameter eingeben";
             
@@ -91,8 +106,8 @@ namespace TorqueMonitoring
 
             wdbSideBar.Visibility = Visibility.Hidden;
             homeScreenSideBar.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar1.Visibility = Visibility.Visible;
-            newProcessMenuSideBar2.Visibility = Visibility.Hidden;
+            newProcessMenuSideBar.Visibility = Visibility.Visible;
+           
         }
 
         private void editWDBButton_Click(object sender, RoutedEventArgs e)
@@ -119,30 +134,7 @@ namespace TorqueMonitoring
 
         }
 
-        private void nextPageNewProcessMenu_Click(object sender, RoutedEventArgs e)
-        {
-            tt.setSchneiddurchmesser(double.Parse(np.dc_Input.Text));
-            tt.setSchneidenanzahl(int.Parse(np.z_Input.Text));
-            tt.setBohrerspitzenwinkel(double.Parse(np.a_Input.Text));
-
-
-            wdb = new Werkstoffdatenbank();
-            wdb.setReadOnly(true);
-            wdb.setD(double.Parse(np.dc_Input.Text));
-
-            titleTextBlock.Text = "Werkstoff auswählen";
-            frame.NavigationService.Navigate(wdb);
-
-            wdbSideBar.Visibility = Visibility.Hidden;
-            homeScreenSideBar.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar1.Visibility = Visibility.Hidden;
-            newProcessMenuSideBar2.Visibility = Visibility.Visible;
-
-            // pt.doTorqueCalculations();
-            // tt.doTorqueCalculations();
-
-
-        }
+       
 
         private void startMonitoringButton_Click(object sender, RoutedEventArgs e)
         {

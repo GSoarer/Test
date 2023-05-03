@@ -5,41 +5,78 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TorqueMonitoring"
       mc:Ignorable="d" 
-      Height="Auto"
+      Height="{Binding SystemParameters.PrimaryScreenHeight}"
       Width="Auto"
-      Title="NewProcessMenu" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0">
+      Title="NewProcessMenu" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0"
+      >
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid Height="Auto" Width="Auto">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <Grid>
+ 
+            <Image Source="assets/bohrerbild.png" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,20,0,0" Height="Auto"/>
+            
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3.5*"/>
+                    <RowDefinition Height="*"/>
 
-        <!-- User Input 1 -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Bohrerdurchmesser:"/>
-        <TextBox Name="dc_Input" Grid.Row="1" Grid.Column="0" Width="200"/>
+                
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <!-- User Input 2 -->
-        <TextBlock Grid.Row="2" Grid.Column="0"  Text="Schneidenanzahl:"/>
-        <TextBox Name="z_Input" Grid.Row="3" Grid.Column="0" Width="200"/>
+             
+                <!-- User Input 1 -->
+                <TextBlock Grid.Row="0"  Grid.Column ="0" Text="Bohrerspitzenwinkel:" FontFamily="Bahnschrift"/>
+                <TextBox Name="a_Input" Grid.Column ="1" Grid.Row="0"  Width="60" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-        <!-- User Input 3 -->
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Bohrerspitzenwinkel:"/>
-        <TextBox Name="a_Input" Grid.Row="5" Grid.Column="0"  Width="200"/>
+                <!-- User Input 2 -->
+                <TextBlock Grid.Row="1"  Grid.Column ="0" Text="Schneidenanzahl:" FontFamily="Bahnschrift"/>
+                <TextBox Name="z_Input" Grid.Column ="1" Grid.Row="1" Width="60" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,150,0"/>
 
+                <!-- User Input 3 -->
+                <TextBlock Grid.Row="2" Grid.Column ="0" Text="Bohrerdurchmesser:" FontFamily="Bahnschrift"/>
+                <TextBox Name="dc_Input" Grid.Column ="1" Grid.Row="2" Width="60" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,150,0"/>
+            </Grid>
 
-        <Image Source="assets/bohrerbild.png" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="302" Margin="0" Width="572" />
+        </Grid>
 
+        <Grid Grid.Column="1" Margin="200,0,0,0" HorizontalAlignment="Right">
 
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Werkstoffgruppe auswählen:" FontFamily="Bahnschrift" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <ComboBox Name="cbWerkstoffgruppen" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="cbWerkstoffgruppen_SelectionChanged" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Spez. Werkstoff auswählen:" FontFamily="Bahnschrift" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <ComboBox x:Name="cbSpezWerkstoff" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" />
+            </Grid>
+            
+                
+            
+        </Grid>
+        
 
     </Grid>
 </Page>
