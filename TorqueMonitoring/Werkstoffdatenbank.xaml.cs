@@ -14,7 +14,7 @@ using Microsoft.Office.Interop.Excel;
 
 using System.Windows.Shapes;
 using System.IO;
-
+using System.Reflection;
 
 namespace TorqueMonitoring
 {
@@ -37,7 +37,7 @@ namespace TorqueMonitoring
         Worksheet xlws = null;
 
         string fileName = "SchnittdatenControl.xlsx";
-        string filePath;
+        
 
         string currentSheet = "Tabelle1";
 
@@ -47,10 +47,12 @@ namespace TorqueMonitoring
         {
             InitializeComponent();
 
+            string assemblyPath = Assembly.GetExecutingAssembly().Location;
+            string projectFolderPath = Directory.GetParent(assemblyPath).Parent.Parent.FullName;
+            // Console.WriteLine("Project Folder Path: " + projectFolderPath);
 
+            string filePath = projectFolderPath + "/files/" + fileName;
 
-
-            filePath = System.IO.Path.Combine(Environment.CurrentDirectory, fileName);
             excelApp = new Microsoft.Office.Interop.Excel.Application();
             excelWorkbook = excelApp.Workbooks.Open(filePath);
             excelSheets = excelWorkbook.Worksheets;
