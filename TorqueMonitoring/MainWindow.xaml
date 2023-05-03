@@ -111,14 +111,14 @@
 
                             <Popup Width="120"
                                    HorizontalOffset="-20"
-                                   PlacementTarget="{Binding ElementName=home}"
-                                   IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                                   PlacementTarget="{Binding ElementName=addBohrprozessButton}"
+                                   IsOpen="{Binding ElementName=addBohrprozessButton, Path=IsMouseOver, Mode=OneWay}"
                                    Style="{StaticResource PopupStyle}">
 
                                 <Grid>
                                     <Border Style="{StaticResource border}">
 
-                                        <TextBlock Text="Hauptmenü"
+                                        <TextBlock Text="Prozess erstellen"
                                                    Style="{StaticResource PopupText}" />
                                     </Border>
 
@@ -325,7 +325,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="600" />
                     <ColumnDefinition Width="*" />
 
                 </Grid.ColumnDefinitions>
@@ -344,6 +344,8 @@
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="70" />
                             <ColumnDefinition Width="*" />
 
                         </Grid.ColumnDefinitions>
@@ -387,7 +389,7 @@
 
                             <Button.Background>
 
-                                <ImageBrush ImageSource="assets/logo_database.png"
+                                <ImageBrush ImageSource="assets/logo_excel.png"
                                             Stretch="Uniform" />
                             </Button.Background>
 
@@ -400,7 +402,37 @@
                                 <Grid>
                                     <Border Style="{StaticResource border}">
 
-                                        <TextBlock Text="Werkstoffe"
+                                        <TextBlock Text="Öffne Datenbank"
+                                                   Style="{StaticResource PopupText}" />
+                                    </Border>
+
+                                </Grid>
+
+                            </Popup>
+                        </Button>
+
+                        <!--settings page button-->
+
+                        <Button Grid.Column="5"
+                                x:Name="settings"
+                               Style="{StaticResource DockBtnStyle}" Margin="0,0,0,2" Click="settings_Click">
+
+                            <Button.Background>
+
+                                <ImageBrush ImageSource="assets/logo_settings.png"
+                                            Stretch="Uniform" />
+                            </Button.Background>
+
+                            <Popup Width="120"
+                                   HorizontalOffset="-35"
+                                   PlacementTarget="{Binding ElementName=settings}"
+                                   IsOpen="{Binding ElementName=settings, Path=IsMouseOver, Mode=OneWay}"
+                                   Style="{StaticResource PopupStyle}">
+
+                                <Grid>
+                                    <Border Style="{StaticResource border}">
+
+                                        <TextBlock Text="Einstellungen"
                                                    Style="{StaticResource PopupText}" />
                                     </Border>
 

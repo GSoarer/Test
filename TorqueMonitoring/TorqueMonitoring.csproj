@@ -151,5 +151,11 @@
   <ItemGroup>
     <Resource Include="assets\bohrerbild.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\logo_excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\logo_settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

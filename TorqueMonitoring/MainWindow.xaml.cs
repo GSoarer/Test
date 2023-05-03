@@ -110,6 +110,11 @@ namespace TorqueMonitoring
            
         }
 
+        private void settings_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void editWDBButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -139,9 +144,12 @@ namespace TorqueMonitoring
         private void startMonitoringButton_Click(object sender, RoutedEventArgs e)
         {
 
-            tt.setWerkstoff(wdb.getSchnittdaten());
+            tt.setWerkstoff(np.getSchnittdaten());
+            tt.setBohrerspitzenwinkel(double.Parse(np.a_Input.Text));
+            tt.setSchneiddurchmesser(double.Parse(np.dc_Input.Text));
+            tt.setSchneidenanzahl(int.Parse(np.z_Input.Text));
 
-            wdb.closeExcel();
+            //wdb.closeExcel();
 
             titleTextBlock.Text = "Torque Monitoring";
             frame.NavigationService.Navigate(new MonitoringPage(tt, pt));

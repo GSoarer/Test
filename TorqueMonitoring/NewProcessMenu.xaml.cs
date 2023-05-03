@@ -36,6 +36,65 @@ namespace TorqueMonitoring
 
 
         private bool handle = true;
+
+        double fz, kc1_1, mc;
+        double vcHM = 0;
+        double vcHSS = 0;
+
+
+        private bool wsIsSelected = false;
+        private bool dcIsEntered = false;
+
+
+
+   
+
+    
+        private void dc_Input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = dc_Input.Text;
+            if (text == null || text.Equals(""))
+            {
+                dcIsEntered = false;
+
+            }
+            else
+            {
+                dcIsEntered = true;
+                xlws.Cells[6, "D"] = double.Parse(text);
+            }
+           
+
+            if (dcIsEntered && wsIsSelected)
+            {
+                cbSpezWerkstoff.IsEnabled = true;
+            }
+            else
+            {
+                cbSpezWerkstoff.IsEnabled = false;
+            }
+        }
+
+        private void coating_Input_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)coating_Input.IsChecked)
+            {
+                ControlTemplate controlTemplate = coating_Input.Template;
+                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                backgroundRectangle.Fill = new SolidColorBrush(Colors.Gold);
+                coatingText.Text = "HSS-Beschichtung";
+            }
+            else
+            {
+                ControlTemplate controlTemplate = coating_Input.Template;
+                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGreen);
+                
+                coatingText.Text = "HM-Beschichtung";
+               
+            }
+        }
+
         public NewProcessMenu()
         {
             InitializeComponent();
@@ -90,7 +149,13 @@ namespace TorqueMonitoring
             cbSpezWerkstoff.Items.Clear();
 
 
-            cbSpezWerkstoff.IsEnabled = true;
+            wsIsSelected = true;
+
+            if (wsIsSelected && dcIsEntered)
+            {
+                cbSpezWerkstoff.IsEnabled = true;
+            }
+            
 
 
             //cbSpezWerkstoff.Items.Add(cbWerkstoffgruppen.SelectedItem);
@@ -157,5 +222,120 @@ namespace TorqueMonitoring
 
 
         }
+
+        private void cbSpezWerkstoff_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Range searchRange = xlws.UsedRange;
+            Range resultRange = searchRange.Find(cbSpezWerkstoff.SelectedItem);
+
+            Range HSSCell = resultRange.Offset[0, 1]; // Offset by 1 column
+            if (HSSCell.Value != null)
+            {
+                vcHSS = HSSCell.Value;
+            }
+            else
+            {
+                vcHSS = 0;
+            }
+           
+
+            Range HMCell = resultRange.Offset[0, 2]; // Offset by 1 column
+            if (HMCell.Value != null)
+            {
+                vcHM = HMCell.Value;
+            }
+            else
+            {
+                vcHM = 0;
+            }
+
+            Range FzCell = resultRange.Offset[0, 3];
+            if (FzCell.Value != null)
+            {
+                fz = FzCell.Value;
+            }
+            else
+            {
+                fz = 0;
+            }
+
+
+            Range Kc1_1Cell = resultRange.Offset[0, 4];
+            if (Kc1_1Cell.Value != null)
+            {
+                kc1_1 = Kc1_1Cell.Value;
+            }
+            else
+            {
+                kc1_1 = 0;
+            }
+
+
+            Range McCell = resultRange.Offset[0, 5];
+            if (McCell.Value != null)
+            {
+                mc = McCell.Value;
+            }
+            else
+            {
+                mc = 0;
+            }
+
+
+            if (vcHSS == 0)
+            {
+                flipCoatingSwitchToFixedHM();
+            }
+            else
+            {
+                coating_Input.IsEnabled = true;
+
+                if ((bool)coating_Input.IsChecked)
+                {
+                    ControlTemplate controlTemplate = coating_Input.Template;
+                    System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                    backgroundRectangle.Fill = new SolidColorBrush(Colors.Gold);
+
+                   
+                }
+                else
+                {
+
+                    ControlTemplate controlTemplate = coating_Input.Template;
+                    System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                    backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGreen);
+
+                }
+            }
+
+
+            
+
+        }
+
+        public void flipCoatingSwitchToFixedHM()
+        {
+            
+            
+            coatingText.Text = "HM-Beschichtung";
+            coating_Input.IsChecked = false;
+            coating_Input.IsEnabled = false;
+
+            ControlTemplate controlTemplate = coating_Input.Template;
+            System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+            backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGray);
+
+
+        }
+
+        public Tuple<double, double, double, double> getSchnittdaten()
+        {
+            var returnTupel = new Tuple<double, double, double, double>(fz, vcHSS, kc1_1, mc);
+            return returnTupel;
+        }
+
+
+       
+        
     }
 }
