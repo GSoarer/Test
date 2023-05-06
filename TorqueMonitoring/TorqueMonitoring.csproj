@@ -157,5 +157,9 @@
   <ItemGroup>
     <Resource Include="assets\logo_settings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\hm_bohrer.png" />
+    <Resource Include="assets\hss_bohrer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,10 +31,11 @@ namespace TorqueMonitoring
         TheoreticalTorque tt = new TheoreticalTorque();
         PhysicalTorque pt = new PhysicalTorque();
 
-        NewProcessMenu np = null;
+        
 
         Werkstoffdatenbank wdb = null;
-        
+
+        public NewProcessMenu np;
 
         public MainWindow()
         {
@@ -46,13 +47,25 @@ namespace TorqueMonitoring
 
 
             Loaded += MyWindow_Loaded;
-            
-           
+            Closing += MainWindow_Closing;
+
+
         }
 
         private void MyWindow_Loaded(object sender, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(new Page1());
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+           
+                if (np != null)
+                {
+                    // Call the method on the existing page object
+                    np.killExcel();
+                }
+            
         }
 
         private void home_Click(object sender, RoutedEventArgs e)
@@ -143,14 +156,18 @@ namespace TorqueMonitoring
 
         private void startMonitoringButton_Click(object sender, RoutedEventArgs e)
         {
+           
+
 
             tt.setWerkstoff(np.getSchnittdaten());
             tt.setBohrerspitzenwinkel(double.Parse(np.a_Input.Text));
             tt.setSchneiddurchmesser(double.Parse(np.dc_Input.Text));
             tt.setSchneidenanzahl(int.Parse(np.z_Input.Text));
 
-            //wdb.closeExcel();
+            
 
+            np.killExcel();
+          
             titleTextBlock.Text = "Torque Monitoring";
             frame.NavigationService.Navigate(new MonitoringPage(tt, pt));
           

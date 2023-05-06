@@ -45,55 +45,8 @@ namespace TorqueMonitoring
         private bool wsIsSelected = false;
         private bool dcIsEntered = false;
 
+        private bool hmSelected = true;
 
-
-   
-
-    
-        private void dc_Input_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string text = dc_Input.Text;
-            if (text == null || text.Equals(""))
-            {
-                dcIsEntered = false;
-
-            }
-            else
-            {
-                dcIsEntered = true;
-                xlws.Cells[6, "D"] = double.Parse(text);
-            }
-           
-
-            if (dcIsEntered && wsIsSelected)
-            {
-                cbSpezWerkstoff.IsEnabled = true;
-            }
-            else
-            {
-                cbSpezWerkstoff.IsEnabled = false;
-            }
-        }
-
-        private void coating_Input_Click(object sender, RoutedEventArgs e)
-        {
-            if ((bool)coating_Input.IsChecked)
-            {
-                ControlTemplate controlTemplate = coating_Input.Template;
-                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
-                backgroundRectangle.Fill = new SolidColorBrush(Colors.Gold);
-                coatingText.Text = "HSS-Beschichtung";
-            }
-            else
-            {
-                ControlTemplate controlTemplate = coating_Input.Template;
-                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
-                backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGreen);
-                
-                coatingText.Text = "HM-Beschichtung";
-               
-            }
-        }
 
         public NewProcessMenu()
         {
@@ -142,7 +95,63 @@ namespace TorqueMonitoring
 
         }
 
-     
+        private void dc_Input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = dc_Input.Text;
+            if (text == null || text.Equals(""))
+            {
+                dcIsEntered = false;
+
+            }
+            else
+            {
+                dcIsEntered = true;
+                xlws.Cells[6, "D"] = double.Parse(text);
+            }
+
+
+            if (dcIsEntered && wsIsSelected)
+            {
+                cbSpezWerkstoff.IsEnabled = true;
+            }
+            else
+            {
+                cbSpezWerkstoff.IsEnabled = false;
+            }
+        }
+
+        private void coating_Input_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)coating_Input.IsChecked)
+            {
+                ControlTemplate controlTemplate = coating_Input.Template;
+                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                backgroundRectangle.Fill = new SolidColorBrush(Colors.Gold);
+                coatingText.Text = "HSS-Beschichtung";
+
+                BitmapImage image = new BitmapImage(new Uri("/assets/hss_bohrer.png", UriKind.Relative));
+                drillImage.Source = image;
+
+                hmSelected = false;
+
+            }
+            else
+            {
+                ControlTemplate controlTemplate = coating_Input.Template;
+                System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
+                backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGreen);
+
+                coatingText.Text = "HM-Beschichtung";
+
+                BitmapImage image = new BitmapImage(new Uri("/assets/hm_bohrer.png", UriKind.Relative));
+                drillImage.Source = image;
+
+                hmSelected = true;
+
+            }
+        }
+
+
         private void cbWerkstoffgruppen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -325,13 +334,35 @@ namespace TorqueMonitoring
             System.Windows.Shapes.Rectangle backgroundRectangle = (System.Windows.Shapes.Rectangle)controlTemplate.FindName("background", coating_Input);
             backgroundRectangle.Fill = new SolidColorBrush(Colors.LightGray);
 
+            BitmapImage image = new BitmapImage(new Uri("/assets/hm_bohrer.png", UriKind.Relative));
+            drillImage.Source = image;
+
+            hmSelected = true;
+
 
         }
 
         public Tuple<double, double, double, double> getSchnittdaten()
         {
-            var returnTupel = new Tuple<double, double, double, double>(fz, vcHSS, kc1_1, mc);
+
+            double coatingReturn = vcHM;
+            if (!hmSelected)
+            {
+                coatingReturn = vcHSS;
+            }
+            var returnTupel = new Tuple<double, double, double, double>(fz, coatingReturn, kc1_1, mc);
             return returnTupel;
+        }
+
+
+        public void killExcel()
+        {
+            excelWorkbook.Save();
+            excelWorkbook.Close();
+           
+            excelApp.Quit();
+            
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
         }
 
 

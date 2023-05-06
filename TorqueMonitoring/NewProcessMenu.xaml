@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TorqueMonitoring"
+     
       mc:Ignorable="d" 
       Height="{Binding SystemParameters.PrimaryScreenHeight}"
       Width="Auto"
@@ -19,7 +20,7 @@
 
         <Grid Width="Auto">
  
-            <Image Source="assets/bohrerbild.png" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,20,0,0" Height="Auto"/>
+            <Image Name="drillImage" Source="assets/hm_bohrer.png" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,20,0,0" Height="Auto"/>
             
             <Grid Margin="0">
                 <Grid.RowDefinitions>
