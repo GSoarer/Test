@@ -47,7 +47,6 @@ namespace TorqueMonitoring
 
         private bool hmSelected = true;
 
-
         public NewProcessMenu()
         {
             InitializeComponent();

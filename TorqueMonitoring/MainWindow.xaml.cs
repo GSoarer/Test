@@ -13,12 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using System.IO;
 using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
-
-using System.Diagnostics;
 using System.Reflection;
 
 namespace TorqueMonitoring
@@ -36,6 +33,8 @@ namespace TorqueMonitoring
         Werkstoffdatenbank wdb = null;
 
         public NewProcessMenu np;
+
+        public OptionsMenu opt;
 
         public MainWindow()
         {
@@ -125,7 +124,15 @@ namespace TorqueMonitoring
 
         private void settings_Click(object sender, RoutedEventArgs e)
         {
+            opt = new OptionsMenu();
 
+            titleTextBlock.Text = "Optionen";
+
+            frame.NavigationService.Navigate(opt);
+
+            wdbSideBar.Visibility = Visibility.Hidden;
+            homeScreenSideBar.Visibility = Visibility.Hidden;
+            newProcessMenuSideBar.Visibility = Visibility.Hidden;
         }
 
         private void editWDBButton_Click(object sender, RoutedEventArgs e)

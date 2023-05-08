@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OptionsMenu.xaml.cs">
+      <DependentUpon>OptionsMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Schnittdatenassistent.cs" />
     <Compile Include="TheoreticalTorque.cs" />
     <Compile Include="Werkstoffdatenbank.xaml.cs">
@@ -127,6 +130,10 @@
     <Page Include="NewProcessMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OptionsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page1.xaml">
       <Generator>MSBuild:Compile</Generator>
