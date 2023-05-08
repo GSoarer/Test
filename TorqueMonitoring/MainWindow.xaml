@@ -109,14 +109,14 @@
                                             Stretch="Uniform" />
                             </Button.Background>
 
-                            <Popup Width="120"
+                            <Popup Width="150"
                                    HorizontalOffset="-20"
                                    PlacementTarget="{Binding ElementName=addBohrprozessButton}"
                                    IsOpen="{Binding ElementName=addBohrprozessButton, Path=IsMouseOver, Mode=OneWay}"
                                    Style="{StaticResource PopupStyle}">
 
                                 <Grid>
-                                    <Border Style="{StaticResource border}">
+                                    <Border Style="{StaticResource border}"> 
 
                                         <TextBlock Text="Prozess erstellen"
                                                    Style="{StaticResource PopupText}" />
@@ -393,7 +393,7 @@
                                             Stretch="Uniform" />
                             </Button.Background>
 
-                            <Popup Width="120"
+                            <Popup Width="150"
                                    HorizontalOffset="-35"
                                    PlacementTarget="{Binding ElementName=database}"
                                    IsOpen="{Binding ElementName=database, Path=IsMouseOver, Mode=OneWay}"
