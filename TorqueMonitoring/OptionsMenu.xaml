@@ -27,15 +27,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
             <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Text="Wellendurchmesser:" FontSize="17" VerticalAlignment="Top" Width="Auto" FontFamily="Bahnschrift" Height="Auto" Margin="37,55,0,0" />
-            <TextBox HorizontalAlignment="Left" Grid.Row="0"  Height="20"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" Grid.ColumnSpan="2" Margin="0.2,56,0,0" Grid.Column="1"/>
+            <TextBox x:Name="wd_Input" Text="{Binding wd_InputValue, Mode=TwoWay}" HorizontalAlignment="Left" Grid.Row="0"  Height="20"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" Grid.ColumnSpan="2" Margin="0.2,56,0,0" Grid.Column="1" />
             <TextBlock HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="mm" VerticalAlignment="Top" FontFamily="Bahnschrift" Height="14" Width="21" Margin="75,62,-20.867,0" Grid.ColumnSpan="2"/>
-            
+
             <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Text="Spannung:" FontSize="17" VerticalAlignment="Top" Width="Auto" FontFamily="Bahnschrift" Height="Auto" Margin="37,55,0,0" />
-            <TextBox HorizontalAlignment="Left" Grid.Row="1"  Height="20"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" Grid.ColumnSpan="2" Margin="0.2,56,0,0" Grid.Column="1"/>
+            <TextBox x:Name="V_Input" Text="{Binding V_InputValue, Mode=TwoWay}" HorizontalAlignment="Left" Grid.Row="1"  Height="20"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="64" Grid.ColumnSpan="2" Margin="0.2,56,0,0" Grid.Column="1" />
             <TextBlock HorizontalAlignment="Left" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" Text="V" VerticalAlignment="Top" FontFamily="Bahnschrift" Height="14" Width="21" Margin="75,62,-20.867,0" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="Speichern" Content="Speichern" Grid.Column="1" Margin="135.6,61,39,20" Grid.Row="2" Click="Speichern_Click"/>
         </Grid>
 
     </Grid>

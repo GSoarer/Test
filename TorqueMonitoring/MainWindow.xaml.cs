@@ -41,11 +41,12 @@ namespace TorqueMonitoring
             InitializeComponent();
             
 
-            pt.setBrückenspannung(10);
-            pt.setDurchmesserWelle(30);
+            pt.setBrückenspannung(Properties.Settings.Default.spannung);
+            pt.setDurchmesserWelle(Properties.Settings.Default.durchmesser);
 
 
             Loaded += MyWindow_Loaded;
+           
             Closing += MainWindow_Closing;
 
 
@@ -170,8 +171,9 @@ namespace TorqueMonitoring
             tt.setBohrerspitzenwinkel(double.Parse(np.a_Input.Text));
             tt.setSchneiddurchmesser(double.Parse(np.dc_Input.Text));
             tt.setSchneidenanzahl(int.Parse(np.z_Input.Text));
+            pt.setBrückenspannung(Properties.Settings.Default.spannung);
+            pt.setDurchmesserWelle(Properties.Settings.Default.durchmesser);
 
-            
 
             np.killExcel();
           
